@@ -182,6 +182,8 @@ public class StretchableListView extends ListView {
                 isStretchDown = true;
             }
 
+            Log.d("onTouchEvent", "isStretchUp = " + isStretchUp+", "+isStretchDown);
+
             if (isStretchUp || isStretchDown) {
                 this.resizeAnimation.cancel();
 
@@ -193,6 +195,7 @@ public class StretchableListView extends ListView {
                     oldStretchHeight = this.lastStretch;
                 }
 
+                //确定滑动高度
                 int stretchHeight = 0;
                 if (!firstStretch) {
                     stretchHeight = (int) (this.lastMotionY - ev.getY()) / 2;
@@ -206,7 +209,6 @@ public class StretchableListView extends ListView {
                 if (firstStretch) {
                     this.lastMotionY = ev.getY();
                 }
-
                 if (unStretched) {
                     restoreFromStretch(oldStretchHeight);
                     if (stretchHeight < 0 && isStretchUp) {
@@ -451,6 +453,9 @@ public class StretchableListView extends ListView {
         }
     }
 
+    /**
+     * 确定滑动方向与距离ßß
+     */
     static class DefaultGestureListener extends GestureDetector.SimpleOnGestureListener {
         private final Context context = App.getInstance();
         private final int touchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
@@ -530,7 +535,6 @@ public class StretchableListView extends ListView {
             if ((this.scrolledDistance >= 0.0F && distanceY > 0.0F) || (this.scrolledDistance <= 0.0F && distanceY < 0.0F) || scrolledDistance < this.touchSlop) {
                 this.scrolledDistance = distanceY + this.scrolledDistance;
             } else {
-                Log.d("GestureListener", "onScroll: ----");
                 this.scrolledDistance = 0;
             }
             if (distanceY < 0.0F) { //手势为向下没去
@@ -538,7 +542,7 @@ public class StretchableListView extends ListView {
             } else {
                 this.scrollDirection = ListUtils.ScrollDirection.DOWN;
             }
-
+            Log.d("GestureListener", "scrollDirection = "+scrollDirection);
             return super.onScroll(e1, e2, distanceX, distanceY);
         }
 
