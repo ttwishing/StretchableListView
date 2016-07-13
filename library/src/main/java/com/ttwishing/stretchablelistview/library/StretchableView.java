@@ -132,7 +132,7 @@ public class StretchableView extends RelativeLayout implements StretchableListVi
     }
 
     @Override
-    public void onStretchHeightChanged(StretchableListView observableListView, int lastStretch, int stretch, boolean paramBoolean) {
+    public void onStretchHeightChanged(StretchableListView observableListView, int lastStretch, int stretch, boolean force) {
         if (lastStretch < 0 && this.which == 0) { //header
             setStretchedHeight(stretch, true);
         }
@@ -143,17 +143,17 @@ public class StretchableView extends RelativeLayout implements StretchableListVi
     }
 
     @Override
-    public void onStretchReleaseComplete(StretchableListView observableListView, int lastStretch, boolean paramBoolean) {
+    public void onStretchReleaseComplete(StretchableListView observableListView, int lastStretch, boolean force) {
         this.isStretching = false;
     }
 
     @Override
-    public void onStretchStart(StretchableListView observableListView, int lastStretch, int stretch, boolean paramBoolean) {
+    public void onStretchStart(StretchableListView observableListView, int lastStretch, int stretch, boolean force) {
         this.isStretching = true;
     }
 
     @Override
-    public void onStretchReleaseStart(StretchableListView observableListView, int stretch, boolean paramBoolean) {
+    public void onStretchReleaseStart(StretchableListView observableListView, int stretch, boolean force) {
 
     }
 }

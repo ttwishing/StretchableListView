@@ -401,16 +401,16 @@ public class StretchableListView extends ListView {
 
     public interface StretchListener {
         //拉伸程度变化
-        void onStretchHeightChanged(StretchableListView listView, int lastStretch, int stretch, boolean paramBoolean);
+        void onStretchHeightChanged(StretchableListView listView, int lastStretch, int stretch, boolean force);
 
         //开始拉伸
-        void onStretchStart(StretchableListView listView, int lastStretch, int stretch, boolean paramBoolean);
+        void onStretchStart(StretchableListView listView, int lastStretch, int stretch, boolean force);
 
         //从当前height开始释放/还原
-        void onStretchReleaseStart(StretchableListView listView, int stretch, boolean paramBoolean);
+        void onStretchReleaseStart(StretchableListView listView, int stretch, boolean force);
 
         //拉伸还原完毕
-        void onStretchReleaseComplete(StretchableListView listView, int lastStretch, boolean paramBoolean);
+        void onStretchReleaseComplete(StretchableListView listView, int lastStretch, boolean force);
 
     }
 

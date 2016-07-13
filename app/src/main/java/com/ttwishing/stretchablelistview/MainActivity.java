@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             stretchListeners.add((StretchableListView.StretchListener) footerView);
         }
 
+
         setObservableListView(listView);
     }
 
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         List<String> data = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
             data.add("item-" + i);
+
         }
 
         return data;
@@ -56,30 +58,30 @@ public class MainActivity extends AppCompatActivity {
         listView.setStretchListener(new StretchableListView.StretchListener() {
 
             @Override
-            public void onStretchHeightChanged(StretchableListView observableListView, int oldHeight, int height, boolean paramBoolean) {
+            public void onStretchHeightChanged(StretchableListView observableListView, int lastStretch, int stretch, boolean force) {
                 for (StretchableListView.StretchListener listener : stretchListeners) {
-                    listener.onStretchHeightChanged(observableListView, oldHeight, height, paramBoolean);
+                    listener.onStretchHeightChanged(observableListView, lastStretch, stretch, force);
                 }
             }
 
             @Override
-            public void onStretchReleaseComplete(StretchableListView observableListView, int height, boolean paramBoolean) {
+            public void onStretchReleaseComplete(StretchableListView observableListView, int stretch, boolean force) {
                 for (StretchableListView.StretchListener listener : stretchListeners) {
-                    listener.onStretchReleaseComplete(observableListView, height, paramBoolean);
+                    listener.onStretchReleaseComplete(observableListView, stretch, force);
                 }
             }
 
             @Override
-            public void onStretchStart(StretchableListView observableListView, int paramInt1, int paramInt2, boolean paramBoolean) {
+            public void onStretchStart(StretchableListView observableListView, int lastStretch, int stretch, boolean force) {
                 for (StretchableListView.StretchListener listener : stretchListeners) {
-                    listener.onStretchStart(observableListView, paramInt1, paramInt2, paramBoolean);
+                    listener.onStretchStart(observableListView, lastStretch, stretch, force);
                 }
             }
 
             @Override
-            public void onStretchReleaseStart(StretchableListView observableListView, int height, boolean paramBoolean) {
+            public void onStretchReleaseStart(StretchableListView observableListView, int height, boolean force) {
                 for (StretchableListView.StretchListener listener : stretchListeners) {
-                    listener.onStretchReleaseStart(observableListView, height, paramBoolean);
+                    listener.onStretchReleaseStart(observableListView, height, force);
                 }
             }
         });
