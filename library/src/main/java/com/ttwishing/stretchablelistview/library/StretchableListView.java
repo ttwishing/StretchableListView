@@ -32,7 +32,7 @@ public class StretchableListView extends ListView {
     private AbsListView.OnScrollListener customScrollListener;//用户定义
     private StretchListener stretchListener;//用户定义
 
-    private DefaultGestureListener gestureListener = new DefaultGestureListener();//aQV
+    private DefaultGestureListener gestureListener = new DefaultGestureListener();
     private GestureDetector gestureDetector = new GestureDetector(getContext().getApplicationContext(), gestureListener);
 
     private ListVerticalResizeAnimation resizeAnimation = new ListVerticalResizeAnimation();
@@ -297,7 +297,7 @@ public class StretchableListView extends ListView {
             height = firstChild.getHeight();
         }
 
-        if ((position * 100 + y / 100.0F) < (firstVisiblePosition * 100 + 100.0F * top / height)) {//cond_2
+        if ((position * 100 + y / 100.0F) < (firstVisiblePosition * 100 + 100.0F * top / height)) {
             gestureListener.setScrollDirection(ListUtils.ScrollDirection.UP);
         } else {
             gestureListener.setScrollDirection(ListUtils.ScrollDirection.DOWN);
